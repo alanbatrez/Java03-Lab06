@@ -14,7 +14,7 @@ public class Bank
     static {
         TOTAL_INITIALIZER = 0;
     }
-    private Map<String, BankAccount> accounts;
+    private final Map<String, BankAccount> accounts;
 
 
     /**
@@ -42,7 +42,6 @@ public class Bank
      *
      * @param accountNumber The account number to look up.
      * @return The corresponding BankAccount object.
-     * @throws IllegalArgumentException if the account is not found.
      */
     public BankAccount retrieveAccount(final String accountNumber)
     {

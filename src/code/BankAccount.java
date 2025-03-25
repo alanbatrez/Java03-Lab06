@@ -8,11 +8,11 @@
 
 public class BankAccount
 {
-    private static final int VALID_ACCOUN_NUM_LEN;
+    private static final int VALID_ACCOUNT_NUM_LEN;
     private static final int MIN_BALANCE;
 
     static {
-        VALID_ACCOUN_NUM_LEN = 5;
+        VALID_ACCOUNT_NUM_LEN = 5;
         MIN_BALANCE          = 0;
     }
 
@@ -23,7 +23,7 @@ public class BankAccount
     /**
      * Constructs a new BankAccount.
      *
-     * @param accountNumber The bank account number (must be exactly VALID_ACCOUN_NUM_LEN digits).
+     * @param accountNumber The bank account number (must be exactly VALID_ACCOUNT_NUM_LEN digits).
      * @param balanceInUsd The initial account balanceInUsd (cannot be negative).
      * @throws IllegalArgumentException if the account number is invalid or the balanceInUsd is negative.
      */
@@ -63,7 +63,6 @@ public class BankAccount
      * Deposits an amount into the account.
      *
      * @param amount The amount to deposit (must be greater than MIN_BALANCE).
-     * @throws IllegalArgumentException if the deposit amount is less than or equal to 0.
      */
     public void deposit(final int amount)
     {
@@ -77,7 +76,6 @@ public class BankAccount
      * Withdraws an amount from the account.
      *
      * @param amountToWithdraw The amount to withdraw (must be less than or equal to the available balance).
-     * @throws IllegalArgumentException if the withdrawal amount exceeds the balance or is zero/negative.
      */
     public void withdraw(final int amountToWithdraw)
     {
@@ -95,10 +93,6 @@ public class BankAccount
      * @param accountToReceive  The recipient bank account.
      * @param accountNumber     The recipient's account number (used for verification).
      * @param moneyToTransfer   The amount to transfer (must be greater than MIN_BALANCE and within available balance).
-     * @throws IllegalArgumentException if:
-     *         - The transfer amount is greater than the available balance.
-     *         - The recipient account is null or has an empty account number.
-     *         - The transfer amount is zero or negative.
      */
     public void transferToBank(final BankAccount accountToReceive,
                                final String accountNumber,
@@ -126,7 +120,6 @@ public class BankAccount
      * Validates that the initial balance is not negative.
      *
      * @param balanceToValidate The initial balance to validate.
-     * @throws IllegalArgumentException if the balance is negative.
      */
     private void balanceValidator(final int balanceToValidate){
 
@@ -138,19 +131,16 @@ public class BankAccount
 
     /**
      * Validates the bank account number.
-     * Ensures that the account number is not blank and has exactly VALID_ACCOUN_NUM_LEN digits.
+     * Ensures that the account number is not blank and has exactly VALID_ACCOUNT_NUM_LEN digits.
      *
      * @param accountNumberToValidate The account number to validate.
-     * @throws IllegalArgumentException if:
-     *         - The account number is blank.
-     *         - The account number does not have exactly VALID_ACCOUN_NUM_LEN digits.
      */
     private void accountNumberValidator(final String accountNumberToValidate)
     {
         if(accountNumberToValidate.isBlank()){
             throw new IllegalArgumentException("Account number cannot be blank");
         }
-        if(accountNumberToValidate.length() != VALID_ACCOUN_NUM_LEN)
+        if(accountNumberToValidate.length() != VALID_ACCOUNT_NUM_LEN)
         {
             throw new IllegalArgumentException("Account number must be exactly 5 digits");
         }
